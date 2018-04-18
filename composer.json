@@ -1,0 +1,36 @@
+{
+    "name": "slam/run-composer-install-alert",
+    "description": "Composer plugin that alerts (in dev) that composer.lock changed and so the developer should run `composer install`",
+    "type": "composer-plugin",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Filippo Tessarotto",
+            "email": "zoeslam@gmail.com"
+        }
+    ],
+    "require": {
+        "php":                 "^7.1.0",
+        "composer-plugin-api": "^1.0.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit":     "^7.1",
+        "composer/composer":   "^1.6.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Slam\\RunComposerInstallAlert\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Slam\\RunComposerInstallAlertTest\\": "tests/"
+        }
+    },
+    "extra": {
+        "class": "Slam\\RunComposerInstallAlert\\Installer"
+    },
+    "conflict": {
+        "brainmaestro/composer-git-hooks": "*"
+    }
+}
