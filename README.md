@@ -1,7 +1,7 @@
 # Slam composer.lock alert
 
-[![Build Status](https://travis-ci.org/Slamdunk/run-composer-install-alert.svg?branch=master)](https://travis-ci.org/Slamdunk/run-composer-install-alert)
-[![Packagist](https://img.shields.io/packagist/v/slam/run-composer-install-alert.svg)](https://packagist.org/packages/slam/run-composer-install-alert)
+[![Build Status](https://travis-ci.org/Slamdunk/alert-on-composerlock-change.svg?branch=master)](https://travis-ci.org/Slamdunk/alert-on-composerlock-change)
+[![Packagist](https://img.shields.io/packagist/v/slam/alert-on-composerlock-change.svg)](https://packagist.org/packages/slam/alert-on-composerlock-change)
 
 ## Installation
 
