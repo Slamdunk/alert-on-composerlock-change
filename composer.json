@@ -1,5 +1,5 @@
 {
-    "name": "slam/run-composer-install-alert",
+    "name": "slam/alert-on-composerlock-change",
     "description": "Composer plugin that alerts (in dev) that composer.lock changed and so the developer should run `composer install`",
     "type": "composer-plugin",
     "license": "MIT",
@@ -19,16 +19,16 @@
     },
     "autoload": {
         "psr-4": {
-            "Slam\\RunComposerInstallAlert\\": "src/"
+            "Slam\\AlertOnComposerlockChange\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Slam\\RunComposerInstallAlertTest\\": "tests/"
+            "Slam\\AlertOnComposerlockChangeTest\\": "tests/"
         }
     },
     "extra": {
-        "class": "Slam\\RunComposerInstallAlert\\Installer"
+        "class": "Slam\\AlertOnComposerlockChange\\Installer"
     },
     "conflict": {
         "brainmaestro/composer-git-hooks": "*"

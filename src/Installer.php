@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Slam\RunComposerInstallAlert;
+namespace Slam\AlertOnComposerlockChange;
 
 use Composer\Composer;
 use Composer\Config;

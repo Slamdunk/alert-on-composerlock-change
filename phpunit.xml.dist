@@ -12,7 +12,7 @@
     beStrictAboutOutputDuringTests="true"
     beStrictAboutTodoAnnotatedTests="true"
 >
-    <testsuite name="Slam\RunComposerInstallAlert tests">
+    <testsuite name="Slam\AlertOnComposerlockChange tests">
         <directory>./tests</directory>
     </testsuite>
     <filter>

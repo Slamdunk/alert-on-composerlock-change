@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Slam\RunComposerInstallAlertTest;
+namespace Slam\AlertOnComposerlockChangeTest;
 
 use Composer\Composer;
 use Composer\Config;
@@ -10,10 +10,10 @@ use Composer\EventDispatcher\EventDispatcher;
 use Composer\IO\IOInterface;
 use Composer\Script\Event;
 use PHPUnit\Framework\TestCase;
-use Slam\RunComposerInstallAlert\Installer;
+use Slam\AlertOnComposerlockChange\Installer;
 
 /**
- * @covers \Slam\RunComposerInstallAlert\Installer
+ * @covers \Slam\AlertOnComposerlockChange\Installer
  */
 final class InstallerTest extends TestCase
 {
