@@ -14,9 +14,9 @@ git diff-tree -r --name-only --no-commit-id "$from" "$to" | grep composer.lock >
 
 if [ "$?" -lt 1 ]
 then
-    echo
-    echo -e "\033[37;1;41m                                                                     \033[0m"
-    echo -e "\033[37;1;41m ! ALERT ! \033[0;1;36m composer.lock changed, run \"composer install\" \033[37;1;41m ! ALERT ! \033[0m"
-    echo -e "\033[37;1;41m                                                                     \033[0m"
-    echo
+    printf "%b" "\n"
+    printf "%b" " \033[37;1;41m                                                                     \033[0m\n"
+    printf "%b" " \033[37;1;41m ! ALERT ! \033[0;1;36m composer.lock changed, run \"composer install\" \033[37;1;41m ! ALERT ! \033[0m\n"
+    printf "%b" " \033[37;1;41m                                                                     \033[0m\n"
+    printf "%b" "\n"
 fi
