@@ -60,23 +60,30 @@ final class Installer implements PluginInterface, EventSubscriberInterface
         $template = <<<'SH'
 #!/bin/sh
 
-hookTime=$(basename "$0")
-currentDir=$(dirname "$0")
-alertPackageDir=$(readlink --canonicalize "$currentDir""/../../vendor/slam/alert-on-composerlock-change/")
-checkScript="$alertPackageDir""/bin/check_composer_lock_change.sh"
+from="%s"
+to="%s"
 
-if [ ! -f "$checkScript" ]; then
-    exit 0
+git diff-tree -r --name-only --no-commit-id "$from" "$to" | grep composer.lock > /dev/null
+
+if [ "$?" -lt 1 ]
+then
+    printf "%%b" "\n"
+    printf "%%b" " \033[37;1;41m                                                                     \033[0m\n"
+    printf "%%b" " \033[37;1;41m ! ALERT ! \033[0;1;36m composer.lock changed, run \"composer install\" \033[37;1;41m ! ALERT ! \033[0m\n"
+    printf "%%b" " \033[37;1;41m                                                                     \033[0m\n"
+    printf "%%b" "\n"
 fi
-
-sh "$checkScript" "$hookTime" "$@"
 
 SH;
 
-        $hooks = [self::POST_CHECKOUT_FILENAME, self::POST_MERGE_FILENAME];
-        foreach ($hooks as $hook) {
+        $hooks = [
+            self::POST_CHECKOUT_FILENAME    => ['from' => '$1', 'to' => '$2'],
+            self::POST_MERGE_FILENAME       => ['from' => 'ORIG_HEAD', 'to' => 'HEAD'],
+        ];
+        foreach ($hooks as $hook => $hookSpec) {
             $filename = $hookDir . \DIRECTORY_SEPARATOR . $hook;
-            \file_put_contents($filename, $template);
+            $content  = \sprintf($template, $hookSpec['from'], $hookSpec['to']);
+            \file_put_contents($filename, $content);
             \chmod($filename, 0755 & ~\umask());
         }
     }
