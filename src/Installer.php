@@ -63,7 +63,13 @@ final class Installer implements PluginInterface, EventSubscriberInterface
 hookTime=$(basename "$0")
 currentDir=$(dirname "$0")
 alertPackageDir=$(readlink --canonicalize "$currentDir""/../../vendor/slam/alert-on-composerlock-change/")
-sh "$alertPackageDir""/bin/check_composer_lock_change.sh" "$hookTime" "$@"
+checkScript="$alertPackageDir""/bin/check_composer_lock_change.sh"
+
+if [ ! -f "$checkScript" ]; then
+    exit 0
+fi
+
+sh "$checkScript" "$hookTime" "$@"
 
 SH;
 
